@@ -1,0 +1,45 @@
+﻿@page "/parks"
+@inject Parks.Repository.Abstractions.IParkRepositoryService _parkRepository
+
+<PageTitle>Parks</PageTitle>
+
+<h1>Parks</h1>
+
+<p>This component demonstrates fetching data from the server.</p>
+
+@if (parks == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Location</th>
+                <th>Off-Leash Dog Area</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var park in parks)
+            {
+                <tr>
+                    <td>@park.Name</td>
+                    <td>@park.Location</td>
+                    <td>@park.OffLeashDogArea</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private Parks.Contract.Models.Park[]? parks;
+
+    protected override void OnInitialized()
+    {
+        parks = _parkRepository.GetParksAsync().ToArray();
+    }
+}
+
