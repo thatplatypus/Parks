@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using Parks.Contract.Models;
-using Parks.Repository.Abstractions;
+using Parks.Repository;
 
 namespace Parks.Domain.Services
 {

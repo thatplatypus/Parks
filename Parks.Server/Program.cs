@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Parks.Domain.Services;
-using Parks.Repository.Abstractions;
+using Parks.Repository;
 using Parks.Server;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);

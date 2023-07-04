@@ -1,6 +1,6 @@
 ﻿using Parks.Contract.Models;
 
-namespace Parks.Repository.Abstractions;
+namespace Parks.Repository;
 
 public interface IParkRepositoryService
 {
