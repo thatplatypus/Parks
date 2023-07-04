@@ -13,6 +13,10 @@
 }
 else
 {
+    <div class="row">
+        <h2 class="col-10">List of Parks</h2>
+        <button type="button" class="btn btn-primary col-2" onclick="@AddPark">Add park</button>
+    </div>
     <table class="table">
         <thead>
             <tr>
@@ -32,14 +36,37 @@ else
             }
         </tbody>
     </table>
+
+    @if (ModalOpen)
+    {
+        <Parks.Server.Components.Shared.Modal Title="Add a new park"
+                OnClose="@CloseModal"
+                AcceptCaption="Save">
+            <ParkInputForm>
+
+            </ParkInputForm>
+        </Parks.Server.Components.Shared.Modal>
+    }
 }
 
 @code {
     private Parks.Contract.Models.Park[]? parks;
+    private bool ModalOpen = false;
 
     protected override void OnInitialized()
     {
         parks = _parkRepository.GetParksAsync().ToArray();
+    }
+
+    protected void AddPark()
+    {
+
+        ModalOpen = true;
+    }
+
+    protected async Task CloseModal(bool result) {
+        ModalOpen = false;
+        await Task.CompletedTask;
     }
 }
 

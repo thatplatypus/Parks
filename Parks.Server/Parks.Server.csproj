@@ -31,8 +31,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="Migrations\" />
+    <None Remove="Components\" />
+    <None Remove="Components\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Migrations\" />
+    <Folder Include="Components\" />
+    <Folder Include="Components\Shared\" />
   </ItemGroup>
 </Project>
