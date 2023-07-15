@@ -14,7 +14,7 @@
 else
 {
     <div class="row">
-        <h2 class="col-10">List of Parks</h2>
+        <h3 class="col-10">List of Parks</h3>
         <button type="button" class="btn btn-primary col-2" onclick="@AddPark">Add park</button>
     </div>
     <table class="table">
@@ -39,23 +39,21 @@ else
 
     @if (ModalOpen)
     {
-        <Parks.Server.Components.Shared.Modal Title="Add a new park"
+        <ParkInputForm
+                Title="Add a new park"
                 OnClose="@CloseModal"
-                AcceptCaption="Save">
-            <ParkInputForm>
-
-            </ParkInputForm>
-        </Parks.Server.Components.Shared.Modal>
+                OnConfirm="@OnParkAdded">
+        </ParkInputForm>
     }
 }
 
 @code {
-    private Parks.Contract.Models.Park[]? parks;
+    private List<Parks.Contract.Models.Park>? parks = new();
     private bool ModalOpen = false;
 
     protected override void OnInitialized()
     {
-        parks = _parkRepository.GetParksAsync().ToArray();
+        parks = _parkRepository.GetParksAsync().ToList();
     }
 
     protected void AddPark()
@@ -67,6 +65,11 @@ else
     protected async Task CloseModal(bool result) {
         ModalOpen = false;
         await Task.CompletedTask;
+    }
+
+    protected async Task OnParkAdded(Parks.Contract.Models.Park park) {
+        parks.Add(park);
+        await CloseModal(false);
     }
 }
 

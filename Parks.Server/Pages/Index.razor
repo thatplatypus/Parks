@@ -1,7 +1,32 @@
 ﻿@page "/"
+@inject NationalParks.INationalParkClient nationalParkClient
 
 <PageTitle>Index</PageTitle>
 
 <h1>Home</h1>
 
 Welcome to Parks. A blazor powered application to store information about parks.
+
+<h2>National Parks</h2>
+
+<div>
+    @_nationalParksTest
+</div>
+
+
+@code {
+    private IEnumerable<object> _nationalParks;
+    private object _nationalParksTest;
+
+    public async Task GetNationalParksAsync()
+    {
+        _nationalParksTest = await nationalParkClient.GetNationalParksTestAsync();
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await GetNationalParksAsync();
+
+        await base.OnInitializedAsync();
+    }
+}

@@ -1,5 +1,4 @@
-﻿
-<div class="modal fade show" id="myModal" style="display:block; background-color: rgba(10,10,10,.8);" aria-modal="true" role="dialog">
+﻿<div class="modal fade show" id="myModal" style="display:block; background-color: rgba(10,10,10,.8);" aria-modal="true" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -13,12 +12,12 @@
                 <p>@ChildContent</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-info"
+                <button type="button" class="btn btn-secondary"
                         @onclick="@Cancel">
                     Cancel
                 </button>
                 <button type="button" class="btn btn-primary"
-                        @onclick="@Cancel">
+                        @onclick="@Ok">
                     @AcceptCaption
                 </button>
             </div>
@@ -27,22 +26,20 @@
 </div>
 
 @code {
-    [Parameter] public string Title { get; set; }
-    [Parameter] public string AcceptCaption { get; set; }
-    [Parameter] public EventCallback<bool> OnClose { get; set; }
-    [Parameter] public RenderFragment ChildContent { get; set; }
+        [Parameter] public string Title { get; set; }
+        [Parameter] public string AcceptCaption { get; set; }
+        [Parameter] public EventCallback<bool> OnClose { get; set; }
+        [Parameter] public EventCallback<bool> OnConfirm { get; set; }
 
-    private Task Cancel()
-    {
-        return OnClose.InvokeAsync(false);
-    }
-    private Task Ok()
-    {
-        return OnClose.InvokeAsync(true);
-    }
-    }
+        [Parameter] public RenderFragment ChildContent { get; set; }
 
-@code {
-
-}
+        private Task Cancel()
+        {
+            return OnClose.InvokeAsync(false);
+        }
+        private Task Ok()
+        {
+            return OnConfirm.InvokeAsync(true);
+        }
+    }
 

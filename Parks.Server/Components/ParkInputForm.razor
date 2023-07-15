@@ -1,6 +1,66 @@
-﻿<h3>Test</h3>
+﻿<div class="modal fade show" id="myModal" style="display:block; background-color: rgba(10,10,10,.8);" aria-modal="true" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">@Title</h4>
+                <button type="button" class="btn close"
+                        @onclick="@Cancel">
+                    &times;
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    <EditForm Model="@park" OnSubmit="@Ok">
+                        <div class="form-group">
+                            <label>
+                                Name:
+                                <InputText class="form-control" type="text" @bind-Value="park.Name" />
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <label>
+                                Location:
+                                <InputText class="form-control" type="text" @bind-Value="park.Location" />
+                            </label>
+                        </div>
+
+                        <div class="form-check">
+                            <label>
+                                Off-Leash Dog Area
+                                <InputCheckbox class="form-check-input" type="checkbox" @bind-Value="park.OffLeashDogArea" />
+                            </label>
+                        </div>
+                    </EditForm>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary"
+                        @onclick="@Cancel">
+                    Cancel
+                </button>
+                <button type="button" class="btn btn-primary"
+                        @onclick="@Ok">
+                    Save
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
 
 @code {
+    public Parks.Contract.Models.Park park = new();
 
+    [Parameter] public string Title { get; set; }
+    [Parameter] public EventCallback<bool> OnClose { get; set; }
+    [Parameter] public EventCallback<Parks.Contract.Models.Park> OnConfirm { get; set; }
+
+    private Task Cancel()
+    {
+        return OnClose.InvokeAsync(false);
+    }
+    private Task Ok()
+    {
+        return OnConfirm.InvokeAsync(park);
+    }
 }
-

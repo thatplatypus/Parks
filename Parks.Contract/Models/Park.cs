@@ -10,6 +10,8 @@ namespace Parks.Contract.Models
 		public string Location { get; set; }
 
 		public bool OffLeashDogArea { get; set; }
+
+		public string ImageUrl { get; set; }
 	}
 }
 
