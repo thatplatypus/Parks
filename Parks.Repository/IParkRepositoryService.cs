@@ -8,5 +8,7 @@ public interface IParkRepositoryService
 
     public Park GetParkByIdAsync(string id);
 
+    public Task<IEnumerable<NationalPark>> GetNationalParksAsync();
+
 }
 

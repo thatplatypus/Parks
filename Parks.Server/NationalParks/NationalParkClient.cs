@@ -21,12 +21,12 @@ namespace Parks.Server.NationalParks
         {
             var request = await _httpClient.GetStringAsync("parks");
 
-            return JsonConvert.DeserializeObject<IEnumerable<Parks.Contract.Models.Park>>(request);
+            return JsonConvert.DeserializeObject<IEnumerable<Park>>(request);
         }
 
-        public async Task<object> GetNationalParksTestAsync()
+        public async Task<GetNationalParkResponse> GetNationalParksTestAsync()
         {
-            return await _httpClient.GetStringAsync("parks");
+            return JsonConvert.DeserializeObject<GetNationalParkResponse>(await _httpClient.GetStringAsync("parks?limit=9999"));
         }
     }
 }

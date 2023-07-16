@@ -9,7 +9,7 @@ namespace Parks.Server.NationalParks
 
 		public Task<IEnumerable<Park>> GetNationalParksAsync();
 
-		public Task<object> GetNationalParksTestAsync();
+		public Task<GetNationalParkResponse> GetNationalParksTestAsync();
 	}
 }
 

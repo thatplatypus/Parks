@@ -1,5 +1,6 @@
 ﻿@page "/"
 @inject NationalParks.INationalParkClient nationalParkClient
+@inject Parks.Repository.IParkRepositoryService _parkRepositoryService;
 
 <PageTitle>Index</PageTitle>
 
@@ -10,17 +11,34 @@ Welcome to Parks. A blazor powered application to store information about parks.
 <h2>National Parks</h2>
 
 <div>
-    @_nationalParksTest
-</div>
+    @if (_nationalParksTest != null)
+        {
+            <h3>Total @_nationalParksTest.Count()</h3>
+            <div class="row g-3">
+                @foreach (var park in _nationalParksTest)
+                    {
+                    <div class="col">
+                        <NationalParkCard Name="@park.FullName"
+                                          Link="@park.Url"
+                                          Image="@(park.Images.Length > 0 ? park.Images[0].Url : "")">
+                        </NationalParkCard>
+                    </div>
+                    }
+                </div>
+        }
+                else {
+                <Spinner></Spinner>
+                }
+            </div>
 
 
 @code {
     private IEnumerable<object> _nationalParks;
-    private object _nationalParksTest;
+    private IEnumerable<Parks.Contract.Models.NationalPark> _nationalParksTest;
 
     public async Task GetNationalParksAsync()
     {
-        _nationalParksTest = await nationalParkClient.GetNationalParksTestAsync();
+        _nationalParksTest =  await _parkRepositoryService.GetNationalParksAsync();
     }
 
     protected override async Task OnInitializedAsync()

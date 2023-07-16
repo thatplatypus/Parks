@@ -1,0 +1,19 @@
+﻿<a href="@Link"><div class="card" style="width:18rem;height:14rem;">
+    <img src="@Image" class="card-img-top img-fluid" style="max-height:10rem;" />
+    <div class="card-body" style="min-height:3rem;">
+        <div class="card-text">@Name</div>
+    </div>
+</div>
+</a>
+
+@code {
+    [Parameter]
+    public string Image { get; set; }
+
+    [Parameter]
+    public string Name { get; set; }
+
+    [Parameter]
+    public string Link { get; set; }
+
+}
