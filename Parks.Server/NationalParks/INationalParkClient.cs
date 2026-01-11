@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Parks.Contract.Models;
 
 namespace Parks.Server.NationalParks

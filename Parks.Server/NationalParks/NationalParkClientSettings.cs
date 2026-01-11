@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 namespace Parks.Server.NationalParks
 {
 	public class NationalParkClientSettings

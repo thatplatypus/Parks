@@ -1,4 +1,4 @@
-﻿using Parks.Contract.Models;
+using Parks.Contract.Models;
 
 namespace Parks.Repository;
 

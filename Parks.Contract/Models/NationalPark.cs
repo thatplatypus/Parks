@@ -1,4 +1,4 @@
-﻿namespace Parks.Contract.Models
+namespace Parks.Contract.Models
 {
 	public class NationalPark
 	{

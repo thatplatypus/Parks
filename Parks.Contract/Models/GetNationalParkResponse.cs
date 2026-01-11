@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 namespace Parks.Contract.Models
 {
 	public class GetNationalParkResponse
@@ -10,6 +10,8 @@ namespace Parks.Contract.Models
 		public string Limit { get; set; }
 
 		public string Start { get; set; }
+
+		public string Test {get; set;}
 	}
 }
 

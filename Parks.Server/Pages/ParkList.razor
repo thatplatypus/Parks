@@ -1,15 +1,12 @@
-﻿@page "/parks"
+@page "/parks"
 @inject Parks.Repository.IParkRepositoryService _parkRepository
 
 <PageTitle>Parks</PageTitle>
 
-<h1>Parks</h1>
-
-<p>This component demonstrates fetching data from the server.</p>
 
 @if (parks == null)
 {
-    <p><em>Loading...</em></p>
+    <Spinner></Spinner>
 }
 else
 {

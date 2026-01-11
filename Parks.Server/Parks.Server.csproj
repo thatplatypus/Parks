@@ -46,10 +46,4 @@
     <Folder Include="Components\Shared\" />
     <Folder Include="NationalParks\" />
   </ItemGroup>
-  <ItemGroup>
-    <Content Remove="wwwroot\parkList.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="wwwroot\parkList.json" />
-  </ItemGroup>
 </Project>

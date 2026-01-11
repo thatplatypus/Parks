@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using Parks.Contract.Models;
 
 namespace Parks.Server.NationalParks
