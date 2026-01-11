@@ -12,6 +12,8 @@ namespace Parks.Contract.Models
 		public string Start { get; set; }
 
 		public string Test {get; set;}
+
+		public string Test2 {get; set;}
 	}
 }
 
